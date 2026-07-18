@@ -779,6 +779,31 @@ label {
     padding-top: 10px;
 }
 
+.footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.footer-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: var(--transition-quick);
+}
+
+.footer-link:hover {
+    color: var(--accent);
+}
+
+.footer-dot {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+}
+
 .github-link-wrap {
     display: flex;
     justify-content: center;
