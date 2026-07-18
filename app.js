@@ -32,6 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const historyList = document.getElementById('history-list');
     const clearHistoryBtn = document.getElementById('clear-history-btn');
 
+    // Modal Elements
+    const disclaimerModal = document.getElementById('disclaimer-modal');
+    const contactModal = document.getElementById('contact-modal');
+    const openDisclaimerBtn = document.getElementById('open-disclaimer-btn');
+    const openContactBtn = document.getElementById('open-contact-btn');
+    const closeDisclaimerBtn = document.getElementById('close-disclaimer-btn');
+    const closeContactBtn = document.getElementById('close-contact-btn');
+
     // Constants
     const CHARSETS = {
         uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -415,4 +423,38 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Failed to copy to clipboard: ', err);
         });
     }
+
+    // Modal Control Handlers
+    function openModal(modal) {
+        modal.classList.remove('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal(modal) {
+        modal.classList.add('hidden');
+        modal.setAttribute('aria-hidden', 'true');
+    }
+
+    openDisclaimerBtn.addEventListener('click', () => openModal(disclaimerModal));
+    openContactBtn.addEventListener('click', () => openModal(contactModal));
+
+    closeDisclaimerBtn.addEventListener('click', () => closeModal(disclaimerModal));
+    closeContactBtn.addEventListener('click', () => closeModal(contactModal));
+
+    // Close on overlay backdrop click
+    [disclaimerModal, contactModal].forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal(modal);
+            }
+        });
+    });
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal(disclaimerModal);
+            closeModal(contactModal);
+        }
+    });
 });

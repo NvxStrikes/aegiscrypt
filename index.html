@@ -250,9 +250,9 @@
             <p>100% Client-Side Engine. Zero Data Exits Your Device.</p>
             <p class="disclaimer-text"><strong>Disclaimer:</strong> Aegis Crypt is a secure client-side password generation tool. All calculations and generation routines are executed locally on your device. We do not transmit, collect, or store any of the passwords you generate. While we utilize industry-standard cryptographic techniques to maximize security and entropy, you are solely responsible for protecting and managing your credentials. The authors and hosts of this software assume no liability or responsibility for any security incidents, losses, or damages resulting from the use of passwords generated here. Use entirely at your own risk.</p>
             <div class="footer-links">
-                <a href="https://github.com/NvxStrikes/password_generator/blob/main/Disclaimer.md" target="_blank" rel="noopener noreferrer" class="footer-link">Disclaimer</a>
+                <button id="open-disclaimer-btn" class="footer-link-btn">Disclaimer</button>
                 <span class="footer-dot">&bull;</span>
-                <a href="https://github.com/NvxStrikes/password_generator/blob/main/Contact.md" target="_blank" rel="noopener noreferrer" class="footer-link">Contact Us</a>
+                <button id="open-contact-btn" class="footer-link-btn">Contact Us</button>
             </div>
             <p class="github-link-wrap">
                 <a href="https://github.com/NvxStrikes/password_generator" target="_blank" rel="noopener noreferrer" class="github-link">
@@ -263,6 +263,55 @@
                 </a>
             </p>
         </footer>
+    </div>
+
+    <!-- Modal Overlays -->
+    <div id="disclaimer-modal" class="modal-overlay hidden" aria-hidden="true" role="dialog" aria-labelledby="disclaimer-title">
+        <div class="modal-content glass-panel">
+            <button class="modal-close" id="close-disclaimer-btn" aria-label="Close Disclaimer">&times;</button>
+            <h2 id="disclaimer-title" class="modal-title">Legal Disclaimer & Limitation of Liability</h2>
+            <div class="modal-body">
+                <p><strong>Effective Date: July 18, 2026</strong></p>
+                <p>Please read this Legal Disclaimer carefully before using Aegis Crypt (the "Software"), a password generation utility hosted or distributed by Nova Strikes.</p>
+                
+                <h3>1. Client-Side Operation & Privacy</h3>
+                <p>Aegis Crypt is built entirely as a client-side application. All cryptographic operations, random index sampling, entropy calculations, and password generations are executed locally in your browser using the browser's Web Cryptography API (<code>window.crypto.getRandomValues</code>). No data, inputs, settings, or generated passwords are ever transmitted to external servers, cloud databases, or third parties.</p>
+
+                <h3>2. No Warranty (As-Is Basis)</h3>
+                <p>THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS, COPYRIGHT HOLDERS, OR DISTRIBUTORS (INCLUDING BUT NOT LIMITED TO NOVA STRIKES) BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE.</p>
+
+                <h3>3. Limitation of Liability</h3>
+                <p>Under no circumstances shall Nova Strikes, its developers, contributors, or hosts be liable to you or any third party for any direct, indirect, incidental, special, consequential, or exemplary damages, including but not limited to loss of profits, goodwill, data, security breaches, unauthorized access, hacking, or compromise of any accounts or systems where generated passwords have been deployed.</p>
+
+                <h3>4. User Responsibility</h3>
+                <p>You are solely responsible for choosing appropriate password strength settings (e.g., sufficient length and diverse character classes) and properly storing and securing your passwords (using a trusted, offline password manager or equivalent physical vault).</p>
+
+                <h3>5. Contact Information</h3>
+                <p>If you have any legal questions or feedback regarding this disclaimer, please contact us at <strong>contact@novastrikes.com</strong> or visit <strong>novastrikes.com</strong>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact-modal" class="modal-overlay hidden" aria-hidden="true" role="dialog" aria-labelledby="contact-title">
+        <div class="modal-content glass-panel">
+            <button class="modal-close" id="close-contact-btn" aria-label="Close Contact Panel">&times;</button>
+            <h2 id="contact-title" class="modal-title">Contact Nova Strikes</h2>
+            <div class="modal-body">
+                <p>Thank you for using Aegis Crypt! We value feedback, security audits, and general inquiries. Below are the official methods to reach us.</p>
+                
+                <h3>📧 Email Inquiries</h3>
+                <p>For general questions, security disclosures, business inquiries, or technical support, please contact us at:<br>
+                <a href="mailto:contact@novastrikes.com" class="accent-link"><strong>contact@novastrikes.com</strong></a></p>
+                <p>We strive to respond to all inquiries within 24 to 48 hours.</p>
+
+                <h3>🌐 Official Website</h3>
+                <p>For more information about our projects, updates, and releases, visit our official homepage:<br>
+                <a href="https://novastrikes.com" target="_blank" rel="noopener noreferrer" class="accent-link"><strong>novastrikes.com</strong></a></p>
+
+                <h3>🛡️ Security Vulnerability Reporting</h3>
+                <p>Aegis Crypt utilizes standard browser-native cryptographic functions to secure your credentials. However, if you discover any security weaknesses, mathematical biases in the sampling loop, or other vulnerabilities in the implementation, please contact us immediately via the email address above with details so we can investigate and deploy a fix.</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
