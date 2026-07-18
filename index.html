@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A premium, cryptographically secure password generator with zero collision risk, custom entropy calculations, and real-time strength analysis.">
+    <title>Aegis Crypt - Super Secure & Cool Password Generator</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <svg class="shield-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="#FE7F2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 8V13" stroke="#EAECF0" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="12" cy="16" r="1" fill="#EAECF0"/>
+                </svg>
+                <h1>AEGIS<span class="accent-text">CRYPT</span></h1>
+            </div>
+            <p class="subtitle">Cryptographically Secure &bull; High Entropy &bull; Zero Collisions</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Password Display Card -->
+            <section class="display-card glass-panel" aria-label="Generated Password Output">
+                <div class="password-wrapper">
+                    <input type="text" id="password-output" readonly placeholder="Click Generate" aria-label="Generated Password">
+                    <div class="display-actions">
+                        <button id="copy-btn" class="action-btn" title="Copy to Clipboard">
+                            <span class="btn-text">Copy</span>
+                            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 10H16M8 14H14M19 11V17C19 18.1046 18.1046 19 17 19H7C5.89543 19 5 18.1046 5 17V7C5 5.89543 5.89543 5 7 5H13M19 11L13 5M19 11H15C13.8954 11 13 10.1046 13 9V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <svg class="check-icon hidden" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6L9 17L4 12" stroke="#FE7F2D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Password Strength & Feedback -->
+                <div class="strength-meter-container">
+                    <div class="strength-bar-wrapper">
+                        <div id="strength-bar" class="strength-bar"></div>
+                    </div>
+                    <div class="strength-labels">
+                        <span class="label-desc">Security Level:</span>
+                        <span id="strength-text" class="strength-text">Select options...</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Configuration Options Panel -->
+            <section class="config-card glass-panel" aria-label="Configuration Settings">
+                <!-- Length Controls -->
+                <div class="form-group">
+                    <div class="label-header">
+                        <label for="length-slider">Password Length</label>
+                        <span id="length-display" class="badge">16</span>
+                    </div>
+                    <input type="range" id="length-slider" min="4" max="128" value="16" class="range-slider">
+                    
+                    <!-- Quick Preset Lengths -->
+                    <div class="preset-buttons">
+                        <button type="button" class="preset-btn" data-len="4">PIN (4)</button>
+                        <button type="button" class="preset-btn" data-len="8">Short (8)</button>
+                        <button type="button" class="preset-btn active" data-len="16">Secure (16)</button>
+                        <button type="button" class="preset-btn" data-len="32">Ultra (32)</button>
+                        <button type="button" class="preset-btn" id="custom-length-btn">Custom</button>
+                    </div>
+                </div>
+
+                <!-- Character Set Options -->
+                <div class="form-group">
+                    <label class="section-label">Character Options</label>
+                    <div class="checkbox-grid">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="opt-uppercase" checked>
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">Uppercase <span class="char-pool">(A-Z)</span></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="opt-lowercase" checked>
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">Lowercase <span class="char-pool">(a-z)</span></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="opt-numbers" checked>
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">Numbers <span class="char-pool">(0-9)</span></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="opt-symbols" checked>
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">Symbols <span class="char-pool">(!@#$%^&*)</span></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Advanced Tuning -->
+                <div class="form-group advanced-options">
+                    <label class="section-label">Advanced Tuning</label>
+                    <div class="toggle-list">
+                        <label class="custom-toggle">
+                            <input type="checkbox" id="opt-exclude-similar" checked>
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Exclude Similar Characters <span class="info-tag" title="Prevents confusion: i, l, 1, o, 0, O, I">i, l, 1...</span></span>
+                        </label>
+                        <label class="custom-toggle">
+                            <input type="checkbox" id="opt-exclude-ambiguous">
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Exclude Ambiguous Symbols <span class="info-tag" title="Exclude complex symbols: { } [ ] ( ) / \ ' ~ , ; : . &lt; &gt;">{ }, [ ]...</span></span>
+                        </label>
+                        <label class="custom-toggle">
+                            <input type="checkbox" id="opt-never-repeat" checked>
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Local Collision Guard <span class="info-tag" title="Ensures this browser never generates the same password twice. Checked against localStorage history.">Infinite Guard</span></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Generate Trigger -->
+                <button type="button" id="generate-btn" class="primary-btn">
+                    <span>Generate Password</span>
+                    <svg class="sparkle-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 3V6M12 18V21M3 12H6M18 12H21M5.636 5.636L7.757 7.757M16.243 16.243L18.364 18.364M5.636 18.364L7.757 16.243M16.243 7.757L18.364 5.636" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </section>
+
+            <!-- Metrics / Security Dashboard -->
+            <section class="metrics-grid" aria-label="Security Metrics Dashboard">
+                <div class="metric-card glass-panel">
+                    <span class="metric-title">Entropy</span>
+                    <div class="metric-value-container">
+                        <span id="entropy-value" class="metric-value">0</span>
+                        <span class="metric-unit">bits</span>
+                    </div>
+                    <p class="metric-desc">Measures unpredictability. Higher is safer.</p>
+                </div>
+                
+                <div class="metric-card glass-panel">
+                    <span class="metric-title">Collision Risk</span>
+                    <div class="metric-value-container">
+                        <span id="collision-value" class="metric-value">0%</span>
+                    </div>
+                    <p id="collision-desc" class="metric-desc">Chance of duplicate creation.</p>
+                </div>
+
+                <div class="metric-card glass-panel">
+                    <span class="metric-title">Crack Resistance</span>
+                    <div class="metric-value-container">
+                        <span id="crack-value" class="metric-value">Instant</span>
+                    </div>
+                    <p class="metric-desc">Estimated time to crack offline.</p>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section class="history-card glass-panel" aria-label="Recent Passwords History">
+                <div class="history-header">
+                    <h2>Recent Passwords</h2>
+                    <button id="clear-history-btn" class="text-btn">Clear History</button>
+                </div>
+                <div class="history-list-wrapper">
+                    <ul id="history-list" class="history-list">
+                        <li class="empty-state">No passwords generated yet.</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>100% Client-Side Engine. Zero Data Exits Your Device.</p>
+            <p class="github-link-wrap">
+                <a href="https://github.com/NvxStrikes/password_generator" target="_blank" rel="noopener noreferrer" class="github-link">
+                    <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                    </svg>
+                    <span>NvxStrikes/password_generator</span>
+                </a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
