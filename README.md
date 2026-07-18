@@ -99,7 +99,7 @@ Then open `http://localhost:8080` or `http://localhost:8000` in your browser.
 ## 📝 GitHub Setup
 
 The repository is pre-configured with a remote origin targeting:
-`https://github.com/NvxStrikes/password_generator`
+`https://github.com/NvxStrikes/aegiscrypt`
 
 To push your changes:
 ```bash
