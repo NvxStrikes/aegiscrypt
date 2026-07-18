@@ -768,6 +768,17 @@ label {
     margin-top: 10px;
 }
 
+.disclaimer-text {
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    max-width: 92%;
+    margin: 8px auto 14px auto;
+    text-align: center;
+    border-top: 1px solid rgba(234, 236, 240, 0.05);
+    padding-top: 10px;
+}
+
 .github-link-wrap {
     display: flex;
     justify-content: center;
