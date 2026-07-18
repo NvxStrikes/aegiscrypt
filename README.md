@@ -64,6 +64,13 @@ Aegis Crypt is built as a complete, **zero-knowledge security** engine designed 
 * **Aegiscrypt Business**: Companies looking to secure team workflows can use this utility to let employees **create and store your passwords** securely. Ensure every team member generates unique **random secure passwords** across all departments.
 * **Aegiscrypt Business Trial & Premium**: Get full access to Aegis Crypt's entire suite of features (including local Infinite Guard collision blocker and real-time entropy dashboard) for free. There is **no credit card required** and zero expiration limits—no need to sign up for a **30-day free aegiscrypt** trial.
 
+### Random Password Generator Online Features
+Aegis Crypt serves as a secure, browser-native **random password generator online** and offline. Designed as a **random password generator create strong passwords** engine, this **random password generator free** of cost offers maximum transparency. Key features include:
+* **Custom Digit Constraints**: Quickly select presets like a **random password generator 12 characters**, **random password generator 15 characters**, or a **random password generator 16 digits** key to match security compliance.
+* **Special Characters & Words**: Toggle the **random password generator with special characters** filter to include symbols, or use custom length presets to generate chunks of **random password generator words**.
+* **Integration with Password Managers**: While Aegis Crypt functions as a secure **random password generator list** utility, it is not a standalone **password manager** (or **passwords manager**). Instead, use this **generator password** utility to construct unique keys, then save them into your preferred local **manager password** or **password gen** vault extension.
+* **Search Engine Visibility**: Whether you found this utility by searching for a **random password generator google** result or via direct link, it is fully open-source and local.
+
 ### Multi-Device Compatibility
 Aegis Crypt is designed to function **across all devices** and within any **browser extension** or local manager vault, ensuring you can manage your passwords from anywhere without external cloud dependencies.
 
